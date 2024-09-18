@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpw1faptod7f"]
+
+[ext_resource type="Texture2D" path="res://Ships/ship_0009.png" id="1_cjsgg"]
+[ext_resource type="Script" path="res://avioneta.gd" id="2_xbp7c"]
+
+[node name="World" type="Node"]
+
+[node name="Avioneta" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(328, 728)
+scale = Vector2(8.8125, 7.6875)
+texture = ExtResource("1_cjsgg")
+script = ExtResource("2_xbp7c")
