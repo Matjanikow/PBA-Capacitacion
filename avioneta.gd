@@ -1,9 +1,4 @@
-extends Sprite2D
+extends Node2D
 
-func _ready() -> void:
-	print(position)
-	print("holus")
-	print(position.x)
-	
-func _process(delta: float) -> void:
-	pass
+func _process(delta): 
+	position.x = position.x - 200 * delta 
