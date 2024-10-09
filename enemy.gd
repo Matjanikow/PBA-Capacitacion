@@ -3,11 +3,13 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 
 var speed = 500
-func _process(delta):
+func _physics_process(delta):
 	position.y += speed * delta
 
 func meFui():
 	position.y = 0
+	randomize()
+	position.x = randi_range(0, get_viewport_rect().size.x)
 	world.score += 1
 
 func _on_area_2d_area_entered(area):
