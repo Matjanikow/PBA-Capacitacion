@@ -1,13 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpw1faptod7f"]
+[gd_scene load_steps=9 format=3 uid="uid://cpw1faptod7f"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_yo1r0"]
 [ext_resource type="Script" path="res://avioneta.gd" id="2_m3gr7"]
+[ext_resource type="PackedScene" uid="uid://ufmcb80yyw7g" path="res://enemy_nuevo.tscn" id="2_wgxin"]
 [ext_resource type="Texture2D" uid="uid://ckt1t5uos3lu8" path="res://Kenney Assets/Ships/ship_0005.png" id="3_aqtwa"]
-[ext_resource type="Texture2D" uid="uid://bi445yygnrphg" path="res://Kenney Assets/Ships/ship_0002.png" id="4_6c54h"]
-[ext_resource type="Script" path="res://enemy.gd" id="5_ouvr4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q04je"]
-size = Vector2(30.927, 24.1395)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2gjb"]
 radius = 12.8
@@ -100,54 +96,6 @@ grow_vertical = 2
 color = Color(0.877687, 0.453323, 0.54544, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Enemy" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(216, 440)
-rotation = 3.13602
-scale = Vector2(4.11854, 4.66919)
-texture = ExtResource("4_6c54h")
-script = ExtResource("5_ouvr4")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy"]
-
-[node name="Area2D" type="Area2D" parent="Enemy"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
-position = Vector2(3.8147e-06, -7.62939e-06)
-shape = SubResource("RectangleShape2D_q04je")
-
-[node name="Enemy2" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(488, 136)
-rotation = 3.13602
-scale = Vector2(4.11854, 4.66919)
-texture = ExtResource("4_6c54h")
-script = ExtResource("5_ouvr4")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy2"]
-
-[node name="Area2D" type="Area2D" parent="Enemy2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/Area2D"]
-position = Vector2(3.8147e-06, -7.62939e-06)
-shape = SubResource("RectangleShape2D_q04je")
-
-[node name="Enemy3" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(168, 32)
-rotation = 3.13602
-scale = Vector2(4.11854, 4.66919)
-texture = ExtResource("4_6c54h")
-script = ExtResource("5_ouvr4")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy3"]
-
-[node name="Area2D" type="Area2D" parent="Enemy3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/Area2D"]
-position = Vector2(3.8147e-06, -7.62939e-06)
-shape = SubResource("RectangleShape2D_q04je")
-
 [node name="Player" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(304, 792)
@@ -175,6 +123,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jbmuq")
+}
+
+[node name="Enemy" parent="." instance=ExtResource("2_wgxin")]
+position = Vector2(144, 272)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_wgxin")]
+position = Vector2(544, 96)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_wgxin")]
+position = Vector2(448, 448)
+
 [node name="Perdiste" type="Label" parent="."]
 visible = false
 anchors_preset = -1
@@ -187,15 +149,3 @@ text = "MORISTE"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jbmuq")
-}
-
-[connection signal="screen_exited" from="Enemy/VisibleOnScreenNotifier2D" to="Enemy" method="meFui"]
-[connection signal="area_entered" from="Enemy/Area2D" to="Enemy" method="_on_area_2d_area_entered"]
-[connection signal="screen_exited" from="Enemy2/VisibleOnScreenNotifier2D" to="Enemy2" method="meFui"]
-[connection signal="area_entered" from="Enemy2/Area2D" to="Enemy2" method="_on_area_2d_area_entered"]
-[connection signal="screen_exited" from="Enemy3/VisibleOnScreenNotifier2D" to="Enemy3" method="meFui"]
-[connection signal="area_entered" from="Enemy3/Area2D" to="Enemy3" method="_on_area_2d_area_entered"]
