@@ -1,11 +1,11 @@
 extends Node
 
+@onready var perdiste: Label = $Perdiste
+@onready var labelScore: Label = $Score
+var score = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _process(delta):
+	labelScore.text = str(score)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func gameOver():
+	get_tree().change_scene_to_file("res://menu.tscn")
