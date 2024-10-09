@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpw1faptod7f"]
+[gd_scene load_steps=5 format=3 uid="uid://cpw1faptod7f"]
 
+[ext_resource type="Script" path="res://world.gd" id="1_7jwvo"]
 [ext_resource type="Texture2D" uid="uid://ckt1t5uos3lu8" path="res://Kenney Assets/Ships/ship_0005.png" id="2_h7h7r"]
 [ext_resource type="Script" path="res://avioneta.gd" id="2_xbp7c"]
+[ext_resource type="PackedScene" uid="uid://b78lb4q4afsf" path="res://enemy.tscn" id="3_nsy8n"]
 
 [node name="World" type="Node"]
+script = ExtResource("1_7jwvo")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,12 +17,14 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Avioneta" type="Node2D" parent="."]
+[node name="Player" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(752, 424)
+position = Vector2(368, 728)
 scale = Vector2(5, 5)
 script = ExtResource("2_xbp7c")
 
-[node name="Sprite2D" type="Sprite2D" parent="Avioneta"]
-rotation = -1.5708
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_h7h7r")
+
+[node name="Enemy" parent="." instance=ExtResource("3_nsy8n")]
+position = Vector2(208, 240)
