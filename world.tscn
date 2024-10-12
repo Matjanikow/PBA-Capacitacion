@@ -156,7 +156,7 @@ grow_vertical = 2
 color = Color(0.877687, 0.453323, 0.54544, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Player" type="Node2D" parent="."]
+[node name="Player" type="Node2D" parent="." groups=["player"]]
 texture_filter = 1
 position = Vector2(304, 792)
 scale = Vector2(5, 5)
@@ -189,15 +189,19 @@ libraries = {
 }
 
 [node name="Enemy" parent="." instance=ExtResource("2_wgxin")]
-position = Vector2(216, 280)
+position = Vector2(80, 8)
+scale = Vector2(10.378, 10.2663)
+speed = 200
 
 [node name="Enemy2" parent="." instance=ExtResource("2_wgxin")]
 position = Vector2(544, 96)
 texture = ExtResource("5_prxbn")
 
 [node name="Enemy3" parent="." instance=ExtResource("2_wgxin")]
-position = Vector2(448, 448)
+position = Vector2(421.513, 418.335)
+scale = Vector2(2.47349, 2.80594)
 texture = ExtResource("6_ja3xj")
+speed = 700
 
 [node name="Perdiste" type="Label" parent="."]
 visible = false
